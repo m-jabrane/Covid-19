@@ -1,11 +1,11 @@
-# Flutter App -- Covid-19
+# Flutter App - Covid-19
 
 Covid-19 is a mobile app to track the latest Coronavirus updates in Morocco.
 
 
 ## 📱 Android APK
 
-Click [here] (https://github.com/m-jabrane/Covid-19/raw/master/apk/Covid-19.apk) to download the application for Android.
+Click [here](https://github.com/m-jabrane/Covid-19/raw/master/apk/Covid-19.apk) to download the application for Android.
 
 
 ## Author(s)
