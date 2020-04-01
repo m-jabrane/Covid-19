@@ -1,0 +1,1 @@
+List<String> languages = ['fr', 'ar', 'en'];
