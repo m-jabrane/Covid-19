@@ -167,70 +167,115 @@ class _HomePageState extends State<HomePage>
       dom.Document document = parser.parse(response.body);
 
       // last update
-      String lastUpdate = document
-          .querySelector("div.ms-rtestate-field tbody")
-          .children
-          .elementAt(0)
-          .querySelector("td p")
-          .text
-          .trim()
-          .replaceAll(new RegExp(r' '), "");
+      String lastUpdate = '';
+      try {
+        lastUpdate = document
+            .querySelector("div.ms-rtestate-field tbody")
+            .children
+            .elementAt(0)
+            .querySelector("td p")
+            .text
+            .trim()
+            .replaceAll(new RegExp(r' '), "");
+      } catch (error) {
+        lastUpdate = 'N/A';
+      }
+      //print('lastUpdate: ' + lastUpdate);
 
       // recovered
-      String recovered = document
-          .querySelector("div.ms-rtestate-field tbody")
-          .children
-          .elementAt(1)
-          .children
-          .elementAt(0)
-          .querySelector('p')
-          .firstChild
-          .text;
+      String recovered = '';
+      try {
+        recovered = document
+            .querySelector("div.ms-rtestate-field tbody")
+            .children
+            .elementAt(1)
+            .children
+            .elementAt(0)
+            .querySelector('p')
+            .firstChild
+            .text;
+      } catch (error) {
+        recovered = 'N/A';
+      }
+      //print('recovered: ' + recovered);
 
       // deaths
-      String deaths = document
-          .querySelector("div.ms-rtestate-field tbody")
-          .children
-          .elementAt(1)
-          .children
-          .elementAt(0)
-          .querySelector("p span")
-          .text;
+      String deaths = '';
+      try {
+        deaths = document
+            .querySelector('div.ms-rtestate-field tbody')
+            .children
+            .elementAt(1)
+            .children
+            .elementAt(0)
+            .querySelector('p')
+            .children
+            .elementAt(2)
+            .text;
+      } catch (error) {
+        deaths = 'N/A';
+      }
+      //print('deaths: ' + deaths);
 
       // confirmed cases
-      String confirmedCases = document
-          .querySelector("div.ms-rtestate-field tbody")
-          .children
-          .elementAt(1)
-          .children
-          .elementAt(1)
-          .querySelector("p")
-          .text;
+      String confirmedCases = '';
+      try {
+        confirmedCases = document
+            .querySelector("div.ms-rtestate-field tbody")
+            .children
+            .elementAt(1)
+            .children
+            .elementAt(1)
+            .querySelector("p")
+            .text;
+      } catch (error) {
+        confirmedCases = 'N/A';
+      }
+      //print(confirmedCases);
 
       // excluded cases
-      String excludedCases = document
-          .querySelector("div.ms-rtestate-field tbody")
-          .children
-          .elementAt(1)
-          .children
-          .elementAt(2)
-          .querySelector("p span")
-          .text;
+      String excludedCases = '';
+      try {
+        excludedCases = document
+            .querySelector("div.ms-rtestate-field tbody")
+            .children
+            .elementAt(1)
+            .children
+            .elementAt(2)
+            .querySelector("p span")
+            .text;
+        excludedCases = excludedCases.substring(0, excludedCases.length - 1);
+      } catch (error) {
+        excludedCases = 'N/A';
+      }
+      //print(excludedCases);
 
       OverviewModel tempOverView =
           new OverviewModel(confirmedCases, deaths, recovered, excludedCases);
 
       // regions values
       List<String> tempRegions = [];
-      for (int i = 1;
-          i < document.querySelector("div.ms-rteTable-6 tbody").children.length;
-          i++) {
-        tempRegions.add(document
-            .querySelector("div.ms-rteTable-6 tbody")
-            .children
-            .elementAt(i)
-            .querySelector("td h2")
-            .text);
+      int regionsLength = 1;
+      try {
+        regionsLength =
+            document.querySelector("div.ms-rteTable-6 tbody").children.length;
+      } catch (error) {
+        regionsLength = 1;
+      }
+      for (int i = 1; i < regionsLength; i++) {
+        String tempRegionValue = '';
+        try {
+          tempRegionValue = document
+              .querySelector("div.ms-rteTable-6 tbody")
+              .children
+              .elementAt(i)
+              .querySelector("td h2")
+              .text;
+        } catch (error) {
+          tempRegionValue = 'N/A';
+        }
+
+        tempRegions.add(tempRegionValue);
       }
 
       this.setState(() {
