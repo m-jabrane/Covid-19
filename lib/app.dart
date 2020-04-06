@@ -255,12 +255,12 @@ class _HomePageState extends State<HomePage>
 
       // regions values
       List<String> tempRegions = [];
-      int regionsLength = 1;
+      int regionsLength = 0;
       try {
         regionsLength =
             document.querySelector("div.ms-rteTable-6 tbody").children.length;
       } catch (error) {
-        regionsLength = 1;
+        regionsLength = 13;
       }
       for (int i = 1; i < regionsLength; i++) {
         String tempRegionValue = '';
