@@ -250,10 +250,16 @@ class _HomePageState extends State<HomePage>
             .elementAt(1)
             .children
             .elementAt(2)
-            .querySelector("p span")
+            .querySelector("p")
             .text
             .trim();
-        excludedCases = excludedCases.substring(0, excludedCases.length - 1);
+        String tmp = '';
+        for (int i = 0; i < excludedCases.length; i++) {
+          if (excludedCases[i].compareTo("\u200B") != 0) {
+            tmp += excludedCases[i];
+          }
+        }
+        excludedCases = tmp;
         if (excludedCases.isEmpty) excludedCases = 'N/A';
       } catch (error) {
         excludedCases = 'N/A';
