@@ -177,6 +177,7 @@ class _HomePageState extends State<HomePage>
             .text
             .trim()
             .replaceAll(new RegExp(r' '), "");
+        if (lastUpdate.isEmpty) lastUpdate = 'N/A';
       } catch (error) {
         lastUpdate = 'N/A';
       }
@@ -192,8 +193,11 @@ class _HomePageState extends State<HomePage>
             .children
             .elementAt(0)
             .querySelector('p')
-            .firstChild
-            .text;
+            .children
+            .elementAt(0)
+            .text
+            .trim();
+        if (recovered.isEmpty) recovered = 'N/A';
       } catch (error) {
         recovered = 'N/A';
       }
@@ -211,7 +215,9 @@ class _HomePageState extends State<HomePage>
             .querySelector('p')
             .children
             .elementAt(2)
-            .text;
+            .text
+            .trim();
+        if (deaths.isEmpty) deaths = 'N/A';
       } catch (error) {
         deaths = 'N/A';
       }
@@ -227,7 +233,9 @@ class _HomePageState extends State<HomePage>
             .children
             .elementAt(1)
             .querySelector("p")
-            .text;
+            .text
+            .trim();
+        if (confirmedCases.isEmpty) confirmedCases = 'N/A';
       } catch (error) {
         confirmedCases = 'N/A';
       }
@@ -243,8 +251,10 @@ class _HomePageState extends State<HomePage>
             .children
             .elementAt(2)
             .querySelector("p span")
-            .text;
+            .text
+            .trim();
         excludedCases = excludedCases.substring(0, excludedCases.length - 1);
+        if (excludedCases.isEmpty) excludedCases = 'N/A';
       } catch (error) {
         excludedCases = 'N/A';
       }
@@ -270,7 +280,9 @@ class _HomePageState extends State<HomePage>
               .children
               .elementAt(i)
               .querySelector("td h2")
-              .text;
+              .text
+              .trim();
+          if (tempRegionValue.isEmpty) tempRegionValue = 'N/A';
         } catch (error) {
           tempRegionValue = 'N/A';
         }
