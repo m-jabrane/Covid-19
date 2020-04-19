@@ -197,6 +197,13 @@ class _HomePageState extends State<HomePage>
             .elementAt(0)
             .text
             .trim();
+        String tmp = '';
+        for (int i = 0; i < recovered.length; i++) {
+          if (recovered[i].compareTo("\u200B") != 0) {
+            tmp += recovered[i];
+          }
+        }
+        recovered = tmp;
         if (recovered.isEmpty) recovered = 'N/A';
       } catch (error) {
         recovered = 'N/A';
@@ -217,6 +224,13 @@ class _HomePageState extends State<HomePage>
             .elementAt(2)
             .text
             .trim();
+        String tmp = '';
+        for (int i = 0; i < deaths.length; i++) {
+          if (deaths[i].compareTo("\u200B") != 0) {
+            tmp += deaths[i];
+          }
+        }
+        deaths = tmp;
         if (deaths.isEmpty) deaths = 'N/A';
       } catch (error) {
         deaths = 'N/A';
@@ -235,6 +249,13 @@ class _HomePageState extends State<HomePage>
             .querySelector("p")
             .text
             .trim();
+        String tmp = '';
+        for (int i = 0; i < confirmedCases.length; i++) {
+          if (confirmedCases[i].compareTo("\u200B") != 0) {
+            tmp += confirmedCases[i];
+          }
+        }
+        confirmedCases = tmp;
         if (confirmedCases.isEmpty) confirmedCases = 'N/A';
       } catch (error) {
         confirmedCases = 'N/A';
