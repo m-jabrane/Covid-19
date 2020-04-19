@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class AppConstants {
   static const appName = "Covid-19 Maroc";
-  static const endEmergencyStateDate = "18H00 20-04-2020";
+  static const endEmergencyStateDate = "18H00 20-05-2020";
   static const stayAtHomeAR = "خليك_في_دارك#";
   static const stayAtHomeEN = "#stay_at_home";
   static const stayAtHomeFR = "#reste_chez_toi";
